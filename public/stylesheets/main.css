@@ -1,0 +1,68 @@
+
+.thumbnail img{
+    width:100%;
+    border-radius:5px;
+}
+
+.thumbnail, .well{
+    background: #dbdbdb;
+    border: 0 none;
+    box-shadow: none;
+}
+
+hr{
+    border-color: #979aa0;
+}
+
+.display h1, .display p, .back{
+     text-shadow: 0px 4px 3px rgba(0,0,0,0.5),
+				  0px 8px 13px  rgba(0,0,0,0.2),
+				  0px 18px 23px rgba(0,0,0,0.2);
+	font-weight:bold;
+}
+.flex{
+    display:flex; 
+    flex-wrap: wrap;
+}
+
+.flex .thumbnail{
+   width: 100%;
+}
+.flex .thumbnail img {
+     height: 175px;
+     width: auto;
+}
+.back{
+    font-size: 1.5em;
+}
+
+.zero-padding{
+    padding:0;
+}
+
+.inline{
+    display: inline;
+}
+
+textarea {
+   resize: none;
+}
+.display{
+    margin-bottom:3em;
+}
+
+.display h1{
+    color:black;
+    font-size:8em;
+}
+.display p{
+    color:black;
+    font-size:3em;
+}
+
+body{
+  background-image: url(http://pub340.ca/wp-content/uploads/2011/08/wall.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}

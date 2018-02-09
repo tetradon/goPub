@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/form.css"></link>
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <h1>Edit <br> <%=pub.name%> </h1>
+        <form action="/pubs/<%=pub._id%>?_method=PUT" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="pub[name]" value="<%=pub.name%>" required></input>
+            </div>
+            <div class="form-group">
+                 <input class="form-control" type="text" name="pub[image]" value="<%=pub.image%>" required></input>
+            </div>
+            <div class="form-group">
+                 <textarea class="form-control" type="text" name="pub[description]" rows="10" required><%=pub.description%></textarea>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            <a class="back" href="/pubs">Go Back</a>
+        </form>
+    </div>
+</div>
+<% include ../partials/footer %>

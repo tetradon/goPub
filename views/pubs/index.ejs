@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="display">
+        <h1>Welcome to GoPub</h1>
+        <p>Here you'll find the best pubs from $cityName</p>
+        <% if(user && user.role === "admin"){ %>
+            <a class="btn btn-primary btn-lg" href="/pubs/new">Add new pub</a>
+        <% } %>
+    </header>
+   <div class="row text-center flex">
+        <% pubs.forEach(function(pub){ %>
+           <div class="col-md-3 col-sm-6">
+               <div class="thumbnail">
+                   <img src="<%=pub.image%>" >
+                   
+                   <div class="caption">
+                       <h4> <%= pub.name %></h4>
+                       <p>
+                           <a href="/pubs/<%=pub._id %>" class="btn btn-primary">More Info</a>
+                       </p>
+                   </div>
+                  
+                </div>
+                
+           </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

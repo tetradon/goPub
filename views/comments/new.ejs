@@ -1,0 +1,17 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/form.css"></link>
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1>Add New Comment to <%=pub.name%> </h1>
+        <form action="/pubs/<%=pub._id%>/comments" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="comment[text]" placeholder="text" required></input>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            <a class="back" href="/pubs">Go Back</a>
+        </form>
+    </div>
+</div>
+
+<% include ../partials/footer %>

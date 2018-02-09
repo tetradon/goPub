@@ -1,0 +1,71 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <!--<div class="col-md-3">-->
+        <!--    <p class="lead">GoPub</p>-->
+        <!--    <div class="list-group">-->
+        <!--        <li class="list-group-item active">Info 1</li>-->
+        <!--        <li class="list-group-item">Info 2</li>-->
+        <!--        <li class="list-group-item">Info 3</li>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <div class="col-md-12">
+            <div class="thumbnail zero-padding">
+                <img class="img-responsive" src="<%=pub.image%>">
+                <div class="caption">
+                    <h4>
+                        <a><%=pub.name%></a>
+                    </h4>
+                    <p>
+                        <%=pub.description%>
+                    </p>
+                    <p>
+                        <em>
+                            Submitted by 
+                            <%=pub.author.username%>,
+                            <%=moment(pub.createdAt).fromNow()%>
+                        </em>
+                    </p>
+                    <% if(user && user.role === "admin") { %>
+                        <a class="btn btn-warning" href="/pubs/<%=pub._id%>/edit">Edit</a>
+                        <form class="inline" action="/pubs/<%=pub._id%>?_method=DELETE" method="POST">
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                    <% } %>
+                 </div>
+                 
+            </div>
+            <div class="well">
+               
+                    <div class="text-right">
+                        <a class="btn btn-success" href="/pubs/<%=pub._id%>/comments/new">Add comment</a>
+                    </div>
+                    <hr>
+             
+                <% pub.comments.reverse().forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><%= comment.author.username %></strong>
+                        <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+                        <p>
+                           <%= comment.text %>
+                        </p>
+                        <% if(user && (user.role === "admin"||user._id.equals(comment.author.id))){ %>
+                            <a href="/pubs/<%=pub._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">
+                                Edit
+                            </a>
+                            <form class="inline" action="/pubs/<%=pub._id%>/comments/<%=comment._id%>?_method=delete" method="POST">
+                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                            </form>
+                        <% } %>
+                        <hr>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+     <a class="back" href="/pubs">Go Back</a>
+</div>
+    
+<% include ../partials/footer %>
